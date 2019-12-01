@@ -2,6 +2,7 @@ import argparse
 import pathlib
 import sys
 
+from . import __version__
 from .io import from_file, to_config, to_file
 from .tree_algorithms import parse
 
@@ -27,6 +28,7 @@ def main():
         help="Defaults to print to stdout",
         default=sys.stdout,
     )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
 
     args = parser.parse_args()
     if args.write:
