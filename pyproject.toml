@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "i3bindings"
-version = "0.1.1"
+version = "1.0.0-alpha.0"
 description = ""
 authors = ["Viliam Valent <i3bindings@viliamvalent.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://gitlab.com/ViliamV/i3bindings"
+repository = "https://github.com/ViliamV/i3bindings"
 
 keywords = ["i3", "bspwm"]
 
