@@ -1,5 +1,6 @@
 import collections
 import re
+
 from typing import Iterator, TextIO
 
 from .constants import I3BINDING_END, I3BINDING_START, I3BINDING_WARNING

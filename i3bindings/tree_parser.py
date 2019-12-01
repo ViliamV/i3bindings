@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import collections
 import re
+
 from typing import Deque, List, Optional
 
 from .constants import (
