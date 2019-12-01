@@ -4,6 +4,9 @@
 
 Succinct syntax for i3 config
 
+## TL;DR
+Check out this [example](#Example).
+
 ## Installation
 `pip install i3bindings`
 
