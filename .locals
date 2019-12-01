@@ -1,0 +1,5 @@
+# workon i3bindings
+alias fix='isort -rc . && black i3bindings/*.py'
+alias lint='mypy i3bindings'
+git config core.hooksPath .githooks
+# vim: ft=sh

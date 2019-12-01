@@ -1,0 +1,11 @@
+#!/bin/bash
+echo "${BLUE}${BOLD}mypy${OFF}"
+poetry run mypy i3bindings || exit 1
+echo "${BLUE}${BOLD}isort${OFF}"
+poetry run isort -rc .
+echo "${BLUE}${BOLD}black${OFF}"
+poetry run black i3bindings/*.py 
+poetry run black tests/*.py 
+echo "${GREEN}${BOLD}Done${OFF}"
+git add -u
+exit 0
