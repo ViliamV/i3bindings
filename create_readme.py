@@ -14,7 +14,7 @@ OUTPUT_FILE = pathlib.Path("./README.md")
 def create_example(lines, outfile):
     input_lines = "\n".join(lines)
     output_lines = "\n".join(parse(lines))
-    outfile.write(f"```css\nINPUT:\n{input_lines}\n\nOUTPUT:\n{output_lines}\n```\n")
+    outfile.write(f"```sh\nINPUT:\n{input_lines}\n\nOUTPUT:\n{output_lines}\n```\n")
 
 
 def main():

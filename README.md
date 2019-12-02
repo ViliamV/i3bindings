@@ -23,7 +23,7 @@ Check out `tile --help` for more options.
 ### Mapping types
 *tile* supports two types of mappings:
 1. Command bindings for WM built-in commands:
-```css
+```sh
 INPUT:
 $mod+f -> fullscreen toggle
 
@@ -31,7 +31,7 @@ OUTPUT:
 bindsym $mod+f fullscreen toggle
 ```
 2. Exec bindings, which are self-explanatory
-```css
+```sh
 INPUT:
 $mod+Return => xterm
 
@@ -44,7 +44,7 @@ bindsym $mod+Return exec --no-startup-id xterm
 
 For example:
 
-```css
+```sh
 INPUT:
 $mod+h/Left -> focus left
 
@@ -57,7 +57,7 @@ bindsym $mod+Left focus left
 *Variables* are shorter way to write bindings that have a similar structure.
 
 E.g.:
-```css
+```sh
 INPUT:
 $mod+{f,s} -> {fullscreen,split} toggle
 
@@ -68,7 +68,7 @@ bindsym $mod+s split toggle
 
 #### Range expansion
 Inside variables you can write `1-10` and it will be expanded to `1,2,3...`.
-```css
+```sh
 INPUT:
 $mod+{1-4} -> workspace {100-103}
 
@@ -89,7 +89,7 @@ foo {bar,{foo,bar}} {0-1} ...
 ```
 
 Use it like this:
-```css
+```sh
 INPUT:
 $mod+Control+Shift {8-9,0} -> move container to workspace {8-10}; workspace @1
 
@@ -101,7 +101,7 @@ bindsym $mod+Control+Shift 0 move container to workspace 10; workspace 10
 
 Or to avoid repeating long sequences:
 
-```css
+```sh
 INPUT:
 $mod+x -> {[instance=\"calculator\"]} scratchpad show; @0 move position center
 
@@ -111,7 +111,7 @@ bindsym $mod+x [instance\"calculator\"] scratchpad show; [instance\"calculator\"
 
 #### Empty value
 You can use empty value inside *Variable*, denoted by `_`. E.g.
-```css
+```sh
 INPUT:
 $mod+{_,Shift+}h/Left -> {focus,move} left
 
@@ -124,7 +124,7 @@ bindsym $mod+Shift+Left move left
 
 ### Nesting
 You can use *Alternatives* and *Variables* inside *Variable* to create many bindings at once.
-```css
+```sh
 INPUT:
 the {{quick,brown},{fox,dog/beast}} => {xterm,kitty} -e echo {jumps,over}
 
@@ -139,7 +139,7 @@ bindsym the beast exec --no-startup-id kitty -e echo over
 ## Additional syntax
 ### Parenthesis
 By default, special characters like space, plus sign, etc. are *token* separators.
-```css
+```sh
 INPUT:
 $mod+p/Print => scrot
 
@@ -148,7 +148,7 @@ bindsym $mod+p exec --no-startup-id scrot
 bindsym $mod+Print exec --no-startup-id scrot
 ```
 You can use parenthesis to modify the behavior:
-```css
+```sh
 INPUT:
 ($mod+p/Print) => scrot
 
@@ -159,7 +159,7 @@ bindsym Print exec --no-startup-id scrot
 
 ### Comments
 Empty lines or lines starting with `#` will be ignored.
-```css
+```sh
 INPUT:
 # This is a comment
 
@@ -168,7 +168,7 @@ OUTPUT:
 ```
 
 ## Example
-```css
+```sh
 INPUT:
 $mod+{_,Shift+}{h/Left,j/Down,k/Up,l/Right}         -> {focus,move} {left,down,up,right}
 $mod+Control+Shift+{{h/Left,k/Up},{l/Right,j/Down}} -> resize {shrink,grow} {width,height} 5px or 5ppt
