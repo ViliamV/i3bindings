@@ -1,4 +1,4 @@
-from i3bindings import __version__
+from tile import __version__
 
 
 def test_version():

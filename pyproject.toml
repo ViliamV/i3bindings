@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "i3bindings"
+name = "tile"
 version = "1.0.0-alpha.1"
 description = ""
-authors = ["Viliam Valent <i3bindings@viliamvalent.com>"]
+authors = ["Viliam Valent <tile@viliamvalent.com>"]
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/ViliamV/i3bindings"
+repository = "https://github.com/ViliamV/tile"
 
-keywords = ["i3", "bspwm"]
+keywords = ["i3", "sway"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -31,7 +31,7 @@ multi_line_output = 3
 use_parentheses = true
 
 [tool.poetry.scripts]
-i3bindings = "i3bindings.cli:main"
+tile = "tile.cli:main"
 
 [build-system]
 requires = ["poetry>=0.12"]

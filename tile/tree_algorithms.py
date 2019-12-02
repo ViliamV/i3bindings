@@ -4,7 +4,7 @@ import re
 from collections import deque
 from typing import Deque, Iterable, Iterator, List, Optional, Tuple, Union
 
-from .constants import BIND_MAPPING, COMMENT, DASH, SLASH
+from .constants import COMMENT, DASH, EXEC_MAPPING, SLASH
 from .node import N, Node
 from .tree_parser import Parser, ParsingError
 
@@ -132,28 +132,32 @@ def update_reference(node: Node, var: Node) -> bool:
     return min(update_reference(c, var) for c in node.children) if node.children else False
 
 
-def print_simple(node: Node):
+def print_simple(node: Node, sway=False):
     if node.type is N.ROOT:
         left = node.children[0]
         right = node.children[1]
-        cmd_type = "" if node.data == BIND_MAPPING else " exec --no-startup-id"
-        line = f"bindsym {print_simple(left)}{cmd_type} {print_simple(right)}"
-        no_doublespace = re.sub(r"[ ]{2,}", " ", line)
-        return no_doublespace
+        exec_str = ""
+        if node.data == EXEC_MAPPING:
+            if sway:
+                exec_str = "exec"
+            else:
+                exec_str = "exec --no-startup-id"
+        line = f"bindsym {print_simple(left)} {exec_str} {print_simple(right)}"
+        return re.sub(r"[ ]{2,}", " ", line)  # no double-space
     if not node.children:
         return node.data
     else:
         return "".join(print_simple(c) for c in node.children)
 
 
-def parse(lines: Iterator[str], strict=False) -> Iterator[str]:
+def parse(lines: Iterator[str], sway=False, strict=False) -> Iterator[str]:
     parser = Parser()
     parse = parser.parse
     for line in lines:
         if line != "\n" and not line.startswith(COMMENT):
             try:
                 for s in simplify(parse(line.strip())):
-                    yield print_simple(s)
+                    yield print_simple(s, sway=sway)
             except (ParsingError, ProcessingError) as e:
                 logging.debug(e)
                 if strict:

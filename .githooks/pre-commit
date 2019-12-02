@@ -1,11 +1,15 @@
 #!/bin/bash
 echo "${BLUE}${BOLD}mypy${OFF}"
-poetry run mypy i3bindings || exit 1
+poetry run mypy tile || exit 1
 echo "${BLUE}${BOLD}isort${OFF}"
 poetry run isort -rc .
 echo "${BLUE}${BOLD}black${OFF}"
-poetry run black i3bindings/*.py 
+poetry run black tile/*.py 
 poetry run black tests/*.py 
-echo "${GREEN}${BOLD}Done${OFF}"
+poetry run black create_readme.py 
 git add -u
+echo "${BLUE}${BOLD}README${OFF}"
+python create_readme.py
+git add README.md
+echo "${GREEN}${BOLD}Done${OFF}"
 exit 0

@@ -3,7 +3,7 @@
 
 import unittest
 
-from i3bindings import *
+from tile import *
 
 
 class TestBindingsParser(unittest.TestCase):

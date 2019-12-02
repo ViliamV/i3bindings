@@ -1,8 +1,8 @@
 import re
 
 
-BIND_MAPPING = "->"
-EXEC_MAPPING = "#>"
+COMMAND_MAPPING = "->"
+EXEC_MAPPING = "=>"
 OPEN_P = "("
 CLOSE_P = ")"
 OPEN_B = "{"
@@ -16,7 +16,7 @@ SPACE = " "
 PLUS = "+"
 COMMENT = "#"
 SPECIAL = (
-    BIND_MAPPING,
+    COMMAND_MAPPING,
     EXEC_MAPPING,
     OPEN_P,
     CLOSE_P,
@@ -51,6 +51,6 @@ _RE = rf"{_SPECIAL}|{_NON_SPECIAL}+"
 RE = re.compile(_RE)
 
 
-I3BINDING_START = "# i3bindings block start {{{"
-I3BINDING_END = "# i3bindings block end }}}"
-I3BINDING_WARNING = "# WARNING: all lines in this block will be deleted if you run: i3bindings --inplace"
+TILE_START = "# tile block start {{{"
+TILE_END = "# tile block end }}}"
+TILE_WARNING = "# WARNING: all lines in this block will be deleted if you run: tile --inplace"

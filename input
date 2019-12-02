@@ -9,12 +9,12 @@ $mod+x                                              -> {[instance=\"calculator\"
 Control+Shift+q                                     -> kill
 $mod+Shift+r                                        -> restart
 
-$mod+Return                                         #> terminal
-$mod+space                                          #> i3-dmenu-desktop --dmenu "center-menu 800 10 -p 'applications' -l 10"
-$mod+{m,comma,period,slash}                         #> $scripts/{monitor,passwords,snippets,clipboard}
-$mod+Shift+slash                                    #> yesno "Empty clipboard?" "gpaste-client empty"
-$mod+Shift+q                                        #> $scripts/power
-($mod+p/Print)                                      #> $scripts/screenshot_select
-$mod+{c,t,g}                                        #> {gsiplecal, thunar, geany}
-Caps_Lock                                           #> setxkbmap -option "caps:escape" && xdotool key Caps_Lock
-# vim:filetype=dosini
+$mod+Return                                         => terminal
+$mod+space                                          => i3-dmenu-desktop --dmenu "center-menu 800 10 -p 'applications' -l 10"
+$mod+{m,comma,period,slash}                         => $scripts/{monitor,passwords,snippets,clipboard}
+$mod+Shift+slash                                    => yesno "Empty clipboard?" "gpaste-client empty"
+$mod+Shift+q                                        => $scripts/power
+($mod+p/Print)                                      => $scripts/screenshot_select
+$mod+{c,t,g}                                        => {gsiplecal, thunar, geany}
+Caps_Lock                                           => setxkbmap -option "caps:escape" && xdotool key Caps_Lock
+# vim:filetype=sh

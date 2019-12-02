@@ -3,7 +3,7 @@ import re
 
 from typing import Iterator, TextIO
 
-from .constants import I3BINDING_END, I3BINDING_START, I3BINDING_WARNING
+from .constants import TILE_END, TILE_START, TILE_WARNING
 
 
 def from_file(file: TextIO) -> Iterator[str]:
@@ -25,5 +25,5 @@ def to_config(config_file: TextIO, lines: Iterator[str]):
         text = f.read()
         f.seek(0)
         f.truncate()
-        text = re.sub(fr"^{I3BINDING_START}\n.*{I3BINDING_END}\n?", r"", text, flags=re.MULTILINE | re.DOTALL)
-        f.write("\n".join((text.strip(), I3BINDING_START, I3BINDING_WARNING, *lines, I3BINDING_END)))
+        text = re.sub(fr"^{TILE_START}\n.*{TILE_END}\n?", r"", text, flags=re.MULTILINE | re.DOTALL)
+        f.write("\n".join((text.strip(), TILE_START, TILE_WARNING, *lines, TILE_END)))

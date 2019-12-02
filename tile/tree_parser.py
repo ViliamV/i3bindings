@@ -7,10 +7,10 @@ from typing import Deque, List, Optional
 
 from .constants import (
     AT,
-    BIND_MAPPING,
     CLOSE_B,
     CLOSE_P,
     COMMA,
+    COMMAND_MAPPING,
     DASH,
     EXEC_MAPPING,
     OPEN_B,
@@ -38,7 +38,7 @@ class Parser:
     def __init__(self):
         self.parse_special = {
             EXEC_MAPPING: self._parse_exec,
-            BIND_MAPPING: self._parse_exec,
+            COMMAND_MAPPING: self._parse_exec,
             OPEN_P: self._parse_open_p,
             CLOSE_P: self._parse_close_p,
             OPEN_B: self._parse_open_b,
