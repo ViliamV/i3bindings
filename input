@@ -5,7 +5,7 @@ $mod+Control+Shift {1-9,0}                          -> move container to workspa
 $mod+grave/Escape                                   -> workspace back_and_forth
 $mod+{_,Shift+}Tab                                  -> workspace {next,prev}
 $mod+{s,f}                                          -> {split,fullscreen} toggle
-$mod+x                                              -> {[instance=\"calculator\"]} scratchpad show; @0 move position center
+$mod+x                                              -> {[instance="calculator"]} scratchpad show; @0 move position center
 Control+Shift+q                                     -> kill
 $mod+Shift+r                                        -> restart
 

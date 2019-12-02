@@ -11,7 +11,7 @@ $mod+{1-4} -> workspace {100-103}
 5:
 $mod+Control+Shift {8-9,0} -> move container to workspace {8-10}; workspace @1
 6:
-$mod+x -> {[instance=\"calculator\"]} scratchpad show; @0 move position center
+$mod+x -> {[instance="calculator"]} scratchpad show; @0 move position center
 7:
 $mod+{_,Shift+}h/Left -> {focus,move} left
 8:

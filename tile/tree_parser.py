@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import collections
-import re
 
-from typing import Deque, List, Optional
+from typing import Deque, Optional
 
 from .constants import (
     AT,
@@ -16,10 +15,10 @@ from .constants import (
     OPEN_B,
     OPEN_P,
     PLUS,
-    RE,
     SLASH,
     SPACE,
     SPECIAL_SET,
+    TOKENIZER,
     UNDERSCORE,
 )
 from .node import N, Node
@@ -59,8 +58,7 @@ class Parser:
         self.current: Optional[Node] = None
         self.side = Side.LEFT
         self.last_var = 0
-        for match in RE.finditer(sentance):
-            # print(match)
+        for match in TOKENIZER.finditer(sentance):
             self._parse_match(match.group(0))
         if self.open_stack or len(self.root.children) != 2:
             raise ParsingError("Parsed line cannot be validated.")

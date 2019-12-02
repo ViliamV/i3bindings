@@ -103,10 +103,10 @@ Or to avoid repeating long sequences:
 
 ```sh
 INPUT:
-$mod+x -> {[instance=\"calculator\"]} scratchpad show; @0 move position center
+$mod+x -> {[instance="calculator"]} scratchpad show; @0 move position center
 
 OUTPUT:
-bindsym $mod+x [instance\"calculator\"] scratchpad show; [instance\"calculator\"] move position center
+bindsym $mod+x [instance="calculator"] scratchpad show; [instance="calculator"] move position center
 ```
 
 #### Empty value

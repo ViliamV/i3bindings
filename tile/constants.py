@@ -24,31 +24,20 @@ SPECIAL = (
     CLOSE_B,
     SLASH,
     COMMA,
-    DASH,
     AT,
     UNDERSCORE,
     SPACE,
     PLUS,
+    DASH,  # This must be last! (so we don't have to escape it in _NON_SPECIAL)
 )
 SPECIAL_SET = set(SPECIAL)
 
 
-def _escape(s: str) -> str:
-    if s in (".", "^", "$", "*", "+", "?", "{", "}", "[", "]", "\\", "|", "(", ")"):
-        return f"\{s}"
-    return s
+_SPECIAL = "|".join(map(re.escape, SPECIAL))
+_NON_SPECIAL = f"[^{''.join(x for x in SPECIAL if len(x) == 1)}]"
+_NEGATIVE_LOOKAHEAD = f"(?!{'|'.join(re.escape(x) for x in SPECIAL if len(x) > 1)})"
 
-
-def _escape_in_set(s: str) -> str:
-    if s == "-":
-        return f"\{s}"
-    return s
-
-
-_SPECIAL = r"|".join(_escape(x) for x in SPECIAL)
-_NON_SPECIAL = rf"[^{''.join(_escape_in_set(x) for x in set(''.join(SPECIAL)))}]"
-_RE = rf"{_SPECIAL}|{_NON_SPECIAL}+"
-RE = re.compile(_RE)
+TOKENIZER = re.compile(f"{_SPECIAL}|{_NON_SPECIAL}+{_NEGATIVE_LOOKAHEAD}")
 
 
 TILE_START = "# tile block start {{{"
