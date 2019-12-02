@@ -28,16 +28,23 @@ SPECIAL = (
     UNDERSCORE,
     SPACE,
     PLUS,
-    DASH,  # This must be last! (so we don't have to escape it in _NON_SPECIAL)
+    DASH,
 )
 SPECIAL_SET = set(SPECIAL)
 
 
-_SPECIAL = "|".join(map(re.escape, SPECIAL))
-_NON_SPECIAL = f"[^{''.join(x for x in SPECIAL if len(x) == 1)}]"
-_NEGATIVE_LOOKAHEAD = f"(?!{'|'.join(re.escape(x) for x in SPECIAL if len(x) > 1)})"
+_SPECIAL = "|".join(re.escape(x) for x in SPECIAL)
 
-TOKENIZER = re.compile(f"{_SPECIAL}|{_NON_SPECIAL}+{_NEGATIVE_LOOKAHEAD}")
+assert "-" in (x[0] for x in SPECIAL), "Change the regex bellow!"
+_SPECIAL_FIRST = set(x[0] for x in SPECIAL if x[0] != "-")
+_NON_SPECIAL = f"[^{''.join(_SPECIAL_FIRST)}-]"  # add dash at the end so you don't have to escape it
+assert set(x[0] for x in SPECIAL if len(x) > 1) - set(x for x in SPECIAL if len(x) == 1) == set(
+    ["="]
+), "Change the regex bellow!"
+# = is OK as long as it is not followed by >
+_EXCEPTION = f"(=(?!>))"
+
+TOKENIZER = re.compile(f"{_SPECIAL}|({_NON_SPECIAL}|{_EXCEPTION})+")
 
 
 TILE_START = "# tile block start {{{"
