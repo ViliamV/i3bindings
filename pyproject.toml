@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tile"
-version = "1.0.0-alpha.7"
+version = "1.0.0-alpha.8"
 description = "Syntax and config generator for tiling window managers"
 authors = ["Viliam Valent <tile@viliamvalent.com>"]
 license = "MIT"
