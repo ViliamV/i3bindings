@@ -11,6 +11,8 @@ function version_bump() {
   [[ ${#versions[@]} -ne 6 ]] && return 1
   from_version=${versions[3]}
   to_version=${versions[5]}
+  read -n 1 -p "Bump version ${from_version} -> ${to_version}? [Y/n]: "
+  [[ $REPLY =~ n|N ]] && return 1
   echo "__version__ = \"${to_version}\"" >| tile/__version__.py
   git add tile/__version__.py
   sed -i "3s/${from_version}/${to_version}/" pyproject.toml
