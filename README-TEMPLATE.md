@@ -6,13 +6,13 @@ Syntax and config generator for tiling window managers.
 
 ## TL;DR
 If you are using [i3](https://i3wm.org/) or [Sway](https://swaywm.org/)
-check out the [example](#Example) bellow.
+check out the [example](#Example) below.
 
 ## Installation
 `pip install tile`
 
 ## Usage
-1. Create *input_file* using [Concepts](#Concepts) bellow.
+1. Create *input_file* using [Concepts](#Concepts) below.
 2. Try it with `tile input_file`
 3. Write it to i3 config using `tile --write input_file`
 4. Write it to Sway config using `tile --write --sway input_file`
