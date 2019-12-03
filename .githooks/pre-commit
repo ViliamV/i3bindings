@@ -1,4 +1,6 @@
 #!/bin/bash
+# Go to project root
+cd $(git rev-parse --show-toplevel)
 echo "${BLUE}${BOLD}mypy${OFF}"
 poetry run mypy tile || exit 1
 echo "${BLUE}${BOLD}isort${OFF}"
