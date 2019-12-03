@@ -2,7 +2,7 @@ import argparse
 import pathlib
 import sys
 
-from . import __version__
+from .__version__ import __version__
 from .io import from_file, to_config, to_file
 from .tree_algorithms import parse
 
