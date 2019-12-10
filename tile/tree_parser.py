@@ -65,6 +65,9 @@ class Parser:
         return self.root
 
     def _parse_match(self, match: str) -> None:
+        # parsing multiple spaces as one
+        if match[0] is SPACE and len(set(match)) == 1:
+            match = SPACE
         if match in SPECIAL_SET:
             parse_as_regular = self.parse_special[match](match)
             if not parse_as_regular:

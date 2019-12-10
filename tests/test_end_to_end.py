@@ -16,4 +16,7 @@ class TestSum(unittest.TestCase):
 
     def test_end_to_end(self):
         output = set(parse(self.input_lines))
+        for received, expeced in zip(sorted(output), sorted(self.output)):
+            if received != expeced:
+                print(f"expected: {expeced}, received: {received}")
         assert output == self.output

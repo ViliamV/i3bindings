@@ -26,14 +26,15 @@ SPECIAL = (
     COMMA,
     AT,
     UNDERSCORE,
-    SPACE,
     PLUS,
     DASH,
+    SPACE,
 )
 SPECIAL_SET = set(SPECIAL)
 
 
-_SPECIAL = "|".join(re.escape(x) for x in SPECIAL)
+_SPECIAL = "|".join(re.escape(x) for x in SPECIAL[:-1])  # without space
+_SPECIAL += "| +"  # match as many spaces as possible
 
 assert "-" in (x[0] for x in SPECIAL), "Change the regex below!"
 _SPECIAL_FIRST = set(x[0] for x in SPECIAL if x[0] != "-")

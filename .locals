@@ -23,4 +23,5 @@ function bump() {
   git push --tags
 }
 complete -W "patch minor major prepatch preminor premajor prerelease" bump
+alias test='poetry run python -m unittest -vv'
 # vim: ft=bash

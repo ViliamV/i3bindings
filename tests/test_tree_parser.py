@@ -31,9 +31,8 @@ class TestSum(unittest.TestCase):
         node.Node(node.N.TEXT, self.left, c.SPACE)
         sentance = f"foo bar {c.COMMAND_MAPPING}"
         self.assertEqual(self.root, self.parser.parse(sentance), "Should parse space as word")
-        node.Node(node.N.TEXT, self.left, c.SPACE)
         sentance = f"foo bar  {c.COMMAND_MAPPING}"
-        self.assertEqual(self.root, self.parser.parse(sentance), "Should parse spaces as words")
+        self.assertEqual(self.root, self.parser.parse(sentance), "Should parse multiple spaces as one")
 
     def test_split_parsing(self):
         sentance = c.COMMAND_MAPPING
