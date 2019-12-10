@@ -13,5 +13,7 @@ git add -u
 echo "${BLUE}${BOLD}README${OFF}"
 python create_readme.py
 git add README.md
+echo "${BLUE}${BOLD}Tests${OFF}"
+poetry run python -m unittest || exit 1
 echo "${GREEN}${BOLD}Done${OFF}"
 exit 0

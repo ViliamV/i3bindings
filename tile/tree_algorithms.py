@@ -133,6 +133,12 @@ def update_reference(node: Node, var: Node) -> bool:
 
 
 def print_simple(node: Node, sway=False):
+    def max_depth(node, current_depth=0):
+        if not node.children:
+            return current_depth
+        else:
+            return max(max_depth(child, current_depth + 1) for child in node.children)
+
     if node.type is N.ROOT:
         left = node.children[0]
         right = node.children[1]
@@ -143,6 +149,7 @@ def print_simple(node: Node, sway=False):
             else:
                 exec_str = "exec --no-startup-id"
         line = f"bindsym {print_simple(left)} {exec_str} {print_simple(right)}"
+        # return str(max_depth(node))
         return re.sub(r"[ ]{2,}", " ", line)  # no double-space
     if not node.children:
         return node.data
